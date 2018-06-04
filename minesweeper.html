@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../index.css">
+	<link rel="stylesheet" type="text/css" href="minesweeper.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="minesweeper.js"></script> 
+	<title>Quincy Minesweeper</title>
+</head>
+<body>
+	<div class="header">
+		<p> Minesweeper</p>
+	</div>
+	<div class="body">
+	<a href="../fpsProgram/index.html"><< back</a>
+	<div class="row stats unselectable">
+		<div class="stat_box">Mines left: <div id="mine_counter_number">300</div></div>
+		<div class="stat_box">Time: <div id="clock_number">00:00</div></div>
+	</div>
+	<div class="field">
+		<canvas id="canvas" width="1200px;" height="600px;"></canvas>
+	</div>
+	<div class="row settings unselectable">
+		<!--Settings-->
+		<div class="option">Amount of squares: <input id="square_range" type="range" min="0" max="11" value="5"></input><div id="square_range_number">50</div></div>
+		<div class="option">Amount of mines: <input id="mine_range" type="range"></input></div>
+	</div>
+	<div class="row buttonRow">
+		<div id="reset_button" class="button clickable unselectable">Reset</div>
+	</div>
+	</div>
+	<div class="footer">
+		<p>By Quincy</p>
+	</div>
+</body>
+</html> 
