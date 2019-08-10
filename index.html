@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta charset="UTF-8">
+		<title>Minesweeper</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="icon" href="./favicon.ico">
+		<script type="text/javascript" src="./minesweeper.js"></script> 
+		<link rel="stylesheet" id="index-css" href="./css/index.css" type="text/css" media="all">
+		<link rel="stylesheet" id="index-css" href="./minesweeper.css" type="text/css" media="all">
+	</head>
+	<body>
+		<div id="side-menu"></div>
+		<div id="overlay"></div>
+		<div id="header"></div>
+		<div id="body">
+			<div class="row stats unselectable">
+				<div class="stat_box">Mines left: <div id="mine_counter_number">300</div></div>
+				<div class="stat_box">Time: <div id="clock_number">00:00</div></div>
+			</div>
+			<div class="field">
+				<canvas id="canvas" width="1200px;" height="600px;"></canvas>
+			</div>
+			<div class="row settings unselectable">
+				<!--Settings-->
+				<div class="option"><div class="option_text">Amount of squares:</div><input class="option_range" id="square_range" type="range" min="0" max="9" value="5"></input><div class="range_number" id="square_range_number"></div></div>
+				<div class="option"><div class="option_text">Amount of mines:</div><input class="option_range" id="mine_range" type="range" min="0" max="9" value="5"></input><div class="range_number" id="mine_range_number"></div></div>
+			</div>
+			<div class="row buttonRow">
+				<div id="reset_button" class="button clickable unselectable">Reset</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</body>
+</html>

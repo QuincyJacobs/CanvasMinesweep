@@ -3,16 +3,19 @@ $(function(){
 	// sizes: 20, 25, 40, 50 100
 	// good combinations: 
 	// s: 50, m: 100	hard
-	var squareSize = 50;
-	var squareSizes = [15, 20, 25, 30, 40, 50, 60, 80, 100, 120, 150, 200]
-	var mineAmount = 30;
+	var squareSize = 30;
+	var squareSizes = [200, 150, 120, 100, 80, 60, 50, 40, 30, 25, 20];
+	var mineAmount = 150;
+	var mineAmounts = [4, 10, 25, 50, 100, 150, 200, 250, 300, 400, 600];
 	var flagAmount = 0;
 	var squares = [];
 	var mouse;
+	var potentialSquareSize = squareSize;
+	var potentialMineAmount = mineAmount;
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d");
-	var rowSize = canvas.width / squareSize;
-	var columnSize = canvas.height / squareSize;
+	var rowSize = Math.floor(canvas.width / squareSize);
+	var columnSize = Math.floor(canvas.height / squareSize);
 	
 	var COLOR_BLACK 		= "#000000";
 	var COLOR_GREY  		= "#888888";
@@ -29,10 +32,17 @@ $(function(){
 	var COLOR_NUMBER_8  	= "#FF0000";
 	
 	function setup() {
-		createSquares();
-		setMines();
-		flagAmount = 0;
-		$("#mine_counter_number").html(mineAmount - flagAmount);
+		if((rowSize * columnSize) <= mineAmount)
+		{
+			alert("Too many mines or not enough squares in the grid");
+		}
+		else
+		{
+			createSquares();
+			setMines();
+			flagAmount = 0;
+			$("#mine_counter_number").html(mineAmount - flagAmount);
+		}
 	}
 	
 	function draw() {
@@ -257,6 +267,10 @@ $(function(){
 	
 	// User interaction
 	$("#reset_button").click(function(){
+		squareSize = potentialSquareSize;
+		mineAmount = potentialMineAmount;
+		rowSize = Math.floor(canvas.width / squareSize);
+		columnSize = Math.floor(canvas.height / squareSize);
 		setup();
 		draw();
 	});
@@ -289,7 +303,7 @@ $(function(){
 	function getSquareArrayPosition(x, y) {
 		var squareRow = ((x - (x%squareSize)) / squareSize);
 		var squareColumn = ((y - (y%squareSize)) / squareSize);
-		var arrayPosition = squareRow + (squareColumn * (canvas.width / squareSize));
+		var arrayPosition = squareRow + (squareColumn * rowSize);
 		return arrayPosition;
 	}
 	
@@ -353,15 +367,26 @@ $(function(){
 		}
 		draw();
 	}
-	
+
 	setup();
 	draw();
-	
+
 	
 	// OPTIONS MENU
+
+	$('#square_range_number').text(rowSize * columnSize);
+	document.getElementById("square_range").value = squareSizes.indexOf(squareSize);
+	$('#mine_range_number').text(mineAmount);
+	document.getElementById("mine_range").value = mineAmounts.indexOf(mineAmount);
 	
-	$('#square_range').change(function() {
-		$('square_range_number').text(squareSizes[this.value]);
-		squareSize = squareSizes[this.value];
+	$('#square_range').on("input change", function() {
+		potentialSquareSize = squareSizes[this.value];
+		var amountOfSquares = (Math.floor(canvas.width / squareSizes[this.value]) * Math.floor(canvas.height / squareSizes[this.value]));
+		$('#square_range_number').text(amountOfSquares);
+	});
+
+	$('#mine_range').on("input change", function() {
+		potentialMineAmount = mineAmounts[this.value];
+		$('#mine_range_number').text(potentialMineAmount);
 	});
 });

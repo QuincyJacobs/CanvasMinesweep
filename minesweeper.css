@@ -1,73 +1,10 @@
-* {
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	font-family: "Arial", Helvetica, sans-serif;
-	font-size: 16px;
-    box-sizing: border-box;
-}
-
-html {
-	background-color: white;
-}
-
-body {
-	background-color: #dbdbdb;
-}
-
-h1 {
-	font-size: 30px;
-	color: blue;
-}
-
-.header {
-	top: 0;
-	right: 0;
-	left: 0;
-	height: 100px;
-	background-color: #3b3a49;
-	border-bottom-left-radius: 60px;
-}
-
-.header  p {
-	color: white;
-	line-height: 100px;
-	font-size: 40px;
-	font-weight: 600;
-	text-align: center;
-}
-
-.footer {
-	position: relative;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	background-color: #817f96;
-	border-top-right-radius: 60px;
-}
-
-.footer p {
-	padding-left: 40px;
-	font-weight: 900;
-	line-height: 40px;
-}
-
-.body {
-	position: relative;
-	margin: 0 auto;
-	padding: 2rem 40px 6rem;
-	padding-top: 2rem;
-	padding-bottom: 6rem;
-}
-
 .button {
 	width: 100px;
-	height: 50px;
+	height: 40px;
 	margin: 10px auto;
 	font-size: 20px;
 	font-weight: 900;
-	line-height: 43px;
+	line-height: 40px;
 	text-align: center;
 	color: #005100;
 	background-color: #6eff6e;
@@ -78,7 +15,8 @@ h1 {
 	background-color: #9bff9b;
 }
 .button:active {
-	line-height: 40px;
+	height: 36px;
+	line-height: 36px;
 	border: 5px solid #3bb13b;
 }
 
@@ -111,6 +49,34 @@ h1 {
 	width: 1200px;
 	height: 600px;
 	margin: 0 auto;
+}
+
+.settings {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.option {
+	margin: 10px 0 0 0;
+	display: block;
+}
+
+.option_text {
+	width: 150px;
+	line-height: 25px;
+	display: inline-block;
+}
+
+.option_range {
+	margin-right: 10px;
+	vertical-align: middle;
+	line-height: 25px;
+	display: inline-block;
+}
+
+.range_number {
+	line-height: 25px;
+	display: inline-block;
 }
 
 .clickable {
